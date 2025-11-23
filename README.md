@@ -163,27 +163,6 @@ If you want to use your dataset, please modify the --original_dataset_path in ru
 Check results.txt later to check PSNR, SSIM, and LPIPS score.
 
 
-<br>
-
-## 5️⃣ Comparison of Various Defects
-
-eq = 2.0
-cross = 1.0
-replace = 0.8
-
-| Defect Type   | PSNR (512) $\uparrow$ | SSIM (512) $\uparrow$ | LPIPS (512) $\downarrow$ | PSNR (1024) $\uparrow$ | SSIM (1024) $\uparrow$ | LPIPS (1024) $\downarrow$ |
-|---------------|-----------------------|-----------------------|--------------------------|------------------------|------------------------|---------------------------|
-| original      | 28.79                 | 0.879                 | 0.046                    | 31.05                  | 0.892                  | 0.088                     |
-| blistering    | 21.90                 | 0.909                 | 0.090                    | 24.72                  | 0.939                  | 0.059                     |
-| dent          | 27.75                 | 0.944                 | 0.047                    | 28.34                  | 0.960                  | 0.025                     |
-| rust          | 27.54                 | 0.938                 | 0.051                    | 28.76                  | 0.948                  | 0.040                     |
-| peeling       | 28.16                 | 0.941                 | 0.042                    | 28.29                  | 0.950                  | 0.038                     |
-| corrosion     | 29.35                 | 0.949                 | 0.035                    | 31.24                  | 0.959                  | 0.040                     |
-| wear          | 30.31                 | 0.953                 | 0.043                    | 28.71                  | 0.950                  | 0.030                     |
-| degradation   | **31.68**             | **0.954**             | **0.027**                | **32.12**              | **0.960**              | **0.028**                 |
-
-
-
 
 ## Acknowledgments
 This work was supported by the Institute of Information \& communications Technology Planning \& Evaluation (IITP) grant funded by the Korean government (MSIT) (No.RS-2022-00155915, Artificial Intelligence Convergence Innovation Human Resources Development (Inha University) and  No.2021-0-02068, Artificial Intelligence Innovation Hub and IITP-2024-RS-2024-00360227, Leading Generative AI Human Resources Development. This work was supported by Inha University Research Grant.
