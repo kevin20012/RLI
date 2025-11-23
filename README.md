@@ -1,10 +1,23 @@
-## RLI: Deterministic Synthesis of Defect Images using Null Optimization<br><sub>Official PyTorch Implementation</sub>
+## RLI: Robust Defect Image Synthesis Using Null Embedding Optimization for Industrial Applications<br><sub>Official PyTorch Implementation</sub>
 
 ![Figure 1](./fig/Figure1.png)
-This repo contains PyTorch model definitions, pre-trained weights and training/sampling code for our paper exploring Deterministic Synthesis of Defect Images using Null Optimization 
 
+This repository contains the official PyTorch implementation of our paper **"Robust Defect Image Synthesis Using Null Embedding Optimization for Industrial Applications"** (submitted to Pattern Recognition).
 
+### Abstract
 
+Accurate defect classification and segmentation are critical in the manufacturing sector, yet both tasks are often hindered by imbalanced data and the scarcity of defect samples. Traditional synthetic data augmentation methods tend to produce images with structural inconsistencies, limiting their effectiveness. In this work, we introduce a novel approach that integrates null embedding optimization with **Residual Linear Interpolation (RLI)** connections to generate latent representations that closely mimic the original images while preserving structural fidelity. Furthermore, a prompt-to-prompt augmentation technique is employed to systematically modify the base text prompt, enabling the generation of diverse defect morphologies. This unified framework primarily enhances the variability of the dataset by generating diverse defect morphologies, while simultaneously yielding high-fidelity synthetic images that visually correspond to real defects, thereby significantly improving the performance of both classification and segmentation models.
+
+**📄 Paper:** [Available at](https://acerghjk-cloud.github.io/PR2025/)
+
+### Key Features
+
+* 🎯 **Training-free approach**: No LoRA fine-tuning required - achieves high-quality synthesis through optimization-based refinement
+* 🔧 **RLI Connections**: Residual Linear Interpolation preserves fine-grained structural details in the UNet architecture
+* 🎨 **Null Embedding Optimization**: Mitigates structural inconsistencies by optimizing latent representations
+* 🔄 **Prompt-to-Prompt Augmentation**: Systematically modifies text prompts to generate diverse defect morphologies
+* 📊 **Dual Task Support**: Improves both defect classification and segmentation performance
+* ⚡️ **Deterministic Generation**: Ensures consistent, reproducible outputs without stochastic variance
 
 This repository contains:
 
@@ -14,17 +27,18 @@ This repository contains:
   </a>
 * 🪐 A simple PyTorch implementation
 * ⚡️ Easy Synthetic data generation using our methodology
-* 💥 Our LoRA weight
+* 🚀 **No LoRA weights required** - optimization-based approach
 
 
-## To Do
+## Method Overview
 
-- [x] LoRA weight upload 
-- [x] Create a Dataset Double 
-- [x] Making long options in Various Defect Generation 
-- [x] Image size 1024 version
-- [x] 4️⃣ Various synthetic data generation (😁 new results)
-- [x] 5️⃣ Comparison of various defects (😁 new results)
+Our method integrates three key components:
+
+1. **DDIM Inversion**: Rapid and precise extraction of latent values from input images
+2. **Null Embedding Optimization**: Optimizes unconditional embeddings to preserve structural fidelity
+3. **RLI Connections**: Residual Linear Interpolation applied to Up-blocks of UNet to preserve high-frequency structural details
+
+Unlike previous methods that require LoRA fine-tuning, our approach is **training-free** and achieves superior results through optimization-based refinement.
 
 
 ## Setup
@@ -33,8 +47,8 @@ First, download and set up the repo:
 Code has been tested on CUDA 11.8, Python 3.10.14 but other versions should be fine.
 
 ```bash
-git clone https://github.com/ugiugi0823/RLI.git
-cd <project-directory>
+git clone https://github.com/acerghjk-cloud/RLI.git
+cd RLI
 ```
 
 We provide an environment.yml file that can be used to create a Conda environment. 
@@ -103,7 +117,7 @@ Check results.txt later to check PSNR, SSIM, and LPIPS score.
 
 Try changing `--prompt` and `--ch_prompt`
 ```bash
-CUDA_VISIBLE_DEVICES=0 python run_various.py \
+CUDA_VISIBLE_DEVICES=0 python src/run_various.py \
 --image_path "./img/[0001]TopBF0.png" \
 --prompt "photo of a crack defect image" \
 --ch_prompt "photo of a crack corrosion image" \
@@ -129,7 +143,7 @@ As a result of changing to various prompts, you can see that it changes in a var
 
 Try changing `--prompt` and `--ch_prompt`
 ```bash
-CUDA_VISIBLE_DEVICES=0 python run_dataset_various.py \
+CUDA_VISIBLE_DEVICES=0 python src/run_dataset_various.py \
 --original_dataset_path "./original_dataset" \
 --new_dataset_path "./new_dataset" \
 --prompt "photo of a crack defect image" \
@@ -190,8 +204,18 @@ This work was supported by the Institute of Information \& communications Techno
 
 
 
+## Citation
+
+If you find our work useful, please cite:
+
+```bibtex
+@article{rli2025,
+  title={Robust Defect Image Synthesis Using Null Embedding Optimization for Industrial Applications},
+  author={Jo, Hyunwook and Park, Jun Hyung and Park, In Kyu},
+  journal={Pattern Recognition},
+  year={2025}
+}
+```
+
 ## License
 The code and model weights are licensed under the MIT License. See [`LICENSE.txt`](LICENSE.txt) for details.
-# RLI
-# RLI
-# RLI
