@@ -5,7 +5,7 @@ from diffusers import  DiffusionPipeline, DDIMScheduler
 from null import NullInversion
 from local import AttentionStore, show_cross_attention, run_and_display, make_controller
 
-ALPHA = 0.2
+ALPHA = 0.1
 
 def main(args):
     
